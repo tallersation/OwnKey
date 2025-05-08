@@ -1,0 +1,47 @@
+/ {
+    chosen {
+        zmk, kscan = &default_kcan;
+    }
+
+    default_kscan: kscan {
+        compatible = "zmk,kscan-gpio-matrix";
+       label = "default_kcan";
+
+        // Column GPIOs (15 columns)
+        col-gpios = <
+            &gpio0 11 GPIO_ACTIVE_HIGH  // Column 1
+            , <&gpio0 12 GPIO_ACTIVE_HIGH  // Column 2
+            , <&gpio0 13 GPIO_ACTIVE_HIGH  // Column 3
+            , <&gpio0 14 GPIO_ACTIVE_HIGH  // Column 4
+            , <&gpio0 15 GPIO_ACTIVE_HIGH  // Column 5
+            , <&gpio0 16 GPIO_ACTIVE_HIGH  // Column 6
+            , <&gpio0 17 GPIO_ACTIVE_HIGH  // Column 7
+            , <&gpio0 18 GPIO_ACTIVE_HIGH  // Column 8
+            , <&gpio1 0 GPIO_ACTIVE_HIGH   // Column 9
+            , <&gpio1 1 GPIO_ACTIVE_HIGH   // Column 10
+            , <&gpio1 2 GPIO_ACTIVE_HIGH   // Column 11
+            , <&gpio1 3 GPIO_ACTIVE_HIGH   // Column 12
+            , <&gpio1 4 GPIO_ACTIVE_HIGH   // Column 13
+            , <&gpio1 5 GPIO_ACTIVE_HIGH   // Column 14
+            , <&gpio1 6 GPIO_ACTIVE_HIGH   // Column 15
+            >;
+
+        // Row GPIOs (6 rows)
+        row-gpios = <
+            &gpio2 0 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)  // Row 1
+            , <&gpio2 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)  // Row 2
+            , <&gpio2 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)  // Row 3
+            , <&gpio2 3 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)  // Row 4
+            , <&gpio2 4 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)  // Row 5
+            , <&gpio2 5 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)  // Row 6
+            >;
+    };
+
+    // Bluetooth and other devices
+    bt {
+        compatible = "zmk,bt";
+        status = "okay";
+        device_name = "NiceNano_V2_Keyboard";
+        bt-hid = <&bt HID_KEYBOARD>;
+    };
+};
